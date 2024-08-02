@@ -1,0 +1,33 @@
+doctype html
+div.container
+  div.container
+    div.tags.mb-1
+      h3.title.is-3 Games
+      span.tag.is-rounded.is-info Available
+      span.tag.is-rounded.is-danger Not available
+
+  table.table.is-stripped.is-bordered.is-hoverable.is-fullwidth.is-narrow
+    thead
+      tr
+        th id
+        th Name
+        th Available
+        th game
+    tbody(id="games") 
+    if games.length
+      each game in games 
+        if game.isAvailable
+          tr
+            td= game.id
+            td= game.name
+            td= game.gameId
+            td 321
+        else
+          tr.is-danger.is-light
+            td= game.id
+            td= game.name
+            td= game.gameId
+            td 123
+    else 
+      tr
+        td.has-text-centered(colspan="10") No games
