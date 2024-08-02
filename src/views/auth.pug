@@ -1,0 +1,8 @@
+doctype html
+html
+  head
+    include meta.pug
+  body(hx-ext="response-targets")
+    div(id="wrapper")
+      div.container.is-max-desktop.mt-5(id="auth-container")
+        include auth-login.pug

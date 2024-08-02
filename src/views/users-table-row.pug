@@ -1,0 +1,10 @@
+if user.isBanned
+  tr.is-danger.is-light(id=`tr-${user.id}`)
+    td= user.name
+    td= user.email
+    td= user.banReason
+else
+  tr(id=`tr-${user.id}`)
+    td= user.name
+    td= user.email
+    td= user.isBanned ? "Yes. Reason: "+ user.banReason :"No"

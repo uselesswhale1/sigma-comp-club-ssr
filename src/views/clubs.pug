@@ -1,0 +1,69 @@
+doctype html
+- 
+  const mine = [];
+  const rest = [];
+
+  clubs.forEach((u)=>{
+    if(u.isAdmin){
+      mine.push(u)
+      return;
+    }
+
+      rest.push(u)
+  });
+div.container.my-6
+  h3.title Managed clubs
+  table.table.is-stripped.is-bordered.is-hoverable.is-fullwidth.is-narrow
+    thead
+      tr
+        th id
+        th Name
+        th Address
+        th Occupied
+        th Stashed
+        th Free desks
+        th Admin Name
+        th Admin Email
+    tbody(id="mine-clubs")
+      if mine.length
+        each club in mine
+          tr
+            td= club.id
+            td= club.name
+            td= club.address
+            td= club.occupied + "/" + club.total
+            td= club.stashed + "/" + club.total
+            td= club.total - club.occupied - club.stashed
+            td= club.adminName
+            td= club.email
+      else
+        tr
+          td.has-text-centered(colspan="10") No clubs
+
+  h3.title Others
+  table.table.is-stripped.is-bordered.is-hoverable.is-fullwidth.is-narrow
+    thead
+      tr
+        th id
+        th Name
+        th Address
+        th Occupied
+        th Stashed
+        th Free desks
+        th Admin Name
+        th Admin Email
+    tbody(id="other-clubs")
+      if rest.length
+        each club in rest
+          tr
+            td= club.id
+            td= club.name
+            td= club.address
+            td= club.occupied + "/" + club.total
+            td= club.stashed + "/" + club.total
+            td= club.total - club.occupied - club.stashed
+            td= club.adminName
+            td= club.email
+      else
+        tr
+          td.has-text-centered(colspan="10") No clubs

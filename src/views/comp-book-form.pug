@@ -1,0 +1,22 @@
+form.field(
+  hx-post="/computers/book"
+  hx-target=`#tr-${id}`
+  hx-target-403=`#book-error-${id}`
+  hx-swap="outerHTML"
+)
+  div.control.has-icons-left.has-icons-right
+    input.input.is-rounded.is-small(
+      type="email"
+      placeholder="jd@mail.com"
+      name="email"
+      value=email
+      hx-trigger="keyup[key=="Enter"]"
+    )
+    span.material-symbols-outlined.icon.is-left.m-2 alternate_email
+    input(
+      type="hidden"
+      name="id"
+      value=id
+    )
+  div.help.is-danger
+    p(id=`book-error-${id}`)

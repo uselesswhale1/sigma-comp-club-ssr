@@ -1,0 +1,29 @@
+form.box(
+  id="login-form" 
+  hx-post="/auth/login" 
+  hx-target="#wrapper" 
+  hx-target-40*="#login-error" 
+  hx-swap="innerHTML" 
+)
+  div.field
+    label.label Email
+    div.control.has-icons-left
+      input.input(id="email-input" type="email" placeholder="jd@mail.com" name="email" value=email)
+      span.material-symbols-outlined.icon.is-left.m-2 alternate_email
+
+  div.field
+    label.label Password
+    div.control
+      input.input(id="pass-input" type="password" placeholder="letmein42" name="password")
+
+  div.field.is-grouped.control
+    button.button.is-link(type="submit") Submit
+
+  article.message.is-danger(id="login-error") 
+    
+div.buttons.mt-5
+  button.button.is-light.is-link(
+    hx-get="/auth/signup-form"
+    hx-target="#auth-container"
+    hx-swap="innerHTML"
+  ) Create account

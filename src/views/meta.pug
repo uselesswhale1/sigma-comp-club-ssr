@@ -1,0 +1,23 @@
+meta(charset="utf-8")
+meta(name="viewport" content="width=device-width,initial-scale=1")
+link(rel="stylesheet" href="https://bulma.io/assets/css/website.min.css?v=202407271354")
+link(href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet")
+
+title Sigma Comp Club
+style.
+  tr.is-danger.is-light{
+    --bulma-table-cell-background-color: #ff839c !important;
+  }
+
+script(src="https://unpkg.com/htmx.org@2.0.1" integrity="sha384-QWGpdj554B4ETpJJC9z+ZHJcA/i59TyjxEPXiiUgN2WmTyV5OEZWCD6gQhgkdpB/" crossorigin="anonymous")
+script(src="https://unpkg.com/htmx-ext-response-targets@2.0.0/response-targets.js")
+
+script.
+  document.addEventListener("DOMContentLoaded", (ev) => {
+    document.body.addEventListener("htmx:beforeOnLoad", (evt) => {
+      if (evt.detail.xhr.status === 403) {
+        evt.detail.shouldSwap = true;
+        evt.detail.isError = false;
+      }
+    });
+  });

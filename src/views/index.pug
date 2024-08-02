@@ -1,0 +1,10 @@
+doctype html
+html
+  head
+    include meta.pug
+  body(hx-ext="response-targets")
+    div(id="wrapper")
+      if !email
+        include auth.pug
+      else
+        include layout.pug

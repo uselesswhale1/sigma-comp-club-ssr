@@ -1,0 +1,34 @@
+form.box(
+  id="signup-form" 
+  hx-post="/auth/signup" 
+  hx-target="#wrapper"  
+  hx-target-40*="#signup-error" 
+  hx-swap="innerHTML" 
+)
+  div.field
+    label.label Name
+    div.control
+      input.input(type="text" placeholder="John Doe" name="name")
+
+  div.field
+    label.label Email
+    div.control.has-icons-left.has-icons-right
+      input.input(type="email" placeholder="jd@mail.com" name="email")
+      span.material-symbols-outlined.icon.is-left.m-2 alternate_email
+
+  div.field
+    label.label Password
+    div.control
+      input.input(type="password" placeholder="letmein42" name="password")
+
+  div.field.is-grouped.control
+    button.button.is-link(type="submit") Submit
+    
+  article.message.is-danger(id="login-error") 
+
+div.buttons.mt-5
+  button.button.is-light.is-link(
+    hx-target="#auth-container"
+    hx-swap="innerHTML"
+    hx-get="/auth/login-form"
+  ) Log in

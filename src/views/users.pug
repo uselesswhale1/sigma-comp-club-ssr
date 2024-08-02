@@ -1,0 +1,41 @@
+doctype html
+-
+  const admins = [];
+  const customers = [];
+
+  users.forEach((u)=>{
+    if(u.isAdmin){
+      admins.push(u)
+      return;
+    }
+
+      customers.push(u)
+  });
+div.grid.is-col-min-32
+  div.cell
+    div.tags.mb-1
+      h3.title Users
+      span.tag.is-rounded Valid
+      span.tag.is-rounded.is-danger Banned
+    table.table.is-stripped.is-bordered.is-hoverable.is-fullwidth.is-narrow
+      thead
+        tr
+          th Name
+          th Email 
+          th Banned (reason)
+      tbody(id="customers") 
+        each user in customers 
+          include users-table-row.pug
+
+  hr
+  div.cell.mt-3
+    h3.title Admin
+    table.table.is-stripped.is-bordered.is-hoverable.is-fullwidth.is-narrow
+      thead
+        tr.is-info
+          th Name
+          th deskId
+          th Stash Reason
+      tbody(id="admins")
+        each user in admins
+          include users-table-row.pug
