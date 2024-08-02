@@ -4,7 +4,5 @@ html
     include meta.pug
   body(hx-ext="response-targets")
     div(id="wrapper")
-      if !email
-        include auth.pug
-      else
-        include layout.pug
+      div.container.is-max-desktop.mt-5(id="auth-container")
+        include auth-login.pug

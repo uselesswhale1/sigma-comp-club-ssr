@@ -10,6 +10,7 @@ require("dotenv").config()
 require("./src/db");
 
 const indexRouter = require("./src/routes/index");
+const authRouter = require("./src/routes/auth");
 
 const MIN = 60 * 1000;
 
@@ -30,6 +31,20 @@ app.use(session({
   secret: process.env.SERVER_SECRET_KEY
 }));
 app.use(nocache());
+
+app.use("/auth", authRouter);
+
+app.use(function (req, res, next) {
+
+  if (!req.session.email) {
+    return res
+      .status(HTTP.HTTP_STATUS_UNAUTHORIZED)
+      .setHeader("HX-Redirect", "/auth")
+      .render("auth");
+  }
+
+  next();
+});
 
 app.use("/", indexRouter);
 
