@@ -1,0 +1,38 @@
+aside.menu
+  p.menu-label Administration
+  ul.menu-list
+    li  
+      a(
+        hx-get=`/users` 
+        hx-swap="innerHTML" 
+        hx-target="#main"
+      ) Users
+
+    li  
+      a(
+        hx-get=`/computers` 
+        hx-swap="innerHTML" 
+        hx-target="#main"
+      ) Computers
+
+    li  
+      a(
+        hx-get=`/games` 
+        hx-swap="innerHTML" 
+        hx-target="#main"
+      ) Games
+
+    li  
+      a(
+        hx-get=`/clubs` 
+        hx-swap="innerHTML" 
+        hx-target="#main"
+      ) Clubs
+  ul.menu-list.mt-2
+    p.menu-label Profile
+    li
+      a.is-danger( 
+        hx-post="/auth/logout"
+        hx-swap="innerHTML" 
+        hx-target="#wrapper" 
+      ) Log out
