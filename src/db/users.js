@@ -12,6 +12,17 @@ const find = async (email) => {
   return users[0];
 };
 
+const getAll = async () => {
+  try {
+    const FIELDS = "id,name,isAdmin,isBanned,banReason"
+    const [users] = await db.promise().query(`SELECT ${FIELDS} FROM users;`);
+
+    return users;
+  } catch (error) {
+    console.error(error);
+  }
+};
+
 const create = async ({ name, email, password }) => {
   try {
     // high coupling, function should not be there
@@ -36,5 +47,6 @@ const createUser = async ({ name, email, password }, isAdmin = 0) => {
 
 module.exports = {
   create,
+  getDetailed: getAll,
   find
 }
