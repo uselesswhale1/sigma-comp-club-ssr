@@ -1,0 +1,22 @@
+form.field(
+  hx-post="/computers/stash"
+  hx-target="#main"
+  hx-target-403=`#stash-error-${id}`
+  hx-swap="innerHTML" 
+)
+  div.control.has-icons-left.has-icons-right
+    input.input.is-rounded.is-small(
+      type="reason"
+      placeholder="put reason here"
+      name="reason"
+      value=reason
+      hx-trigger="keyup[key=="Enter"]"
+    )
+    span.material-symbols-outlined.icon.is-left.m-2 draft
+    input(
+          type="hidden"
+          name="id"
+          value=id
+        )
+  div.help.is-danger
+    p(id=`stash-error-${id}`)= error

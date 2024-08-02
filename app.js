@@ -11,6 +11,7 @@ require("./src/db");
 
 const indexRouter = require("./src/routes/index");
 const authRouter = require("./src/routes/auth");
+const computersRouter = require("./src/routes/computers");
 
 const MIN = 60 * 1000;
 
@@ -47,6 +48,7 @@ app.use(function (req, res, next) {
 });
 
 app.use("/", indexRouter);
+app.use("/computers", computersRouter);
 
 app.use(function (err, req, res) {
   res.locals.message = err.message;

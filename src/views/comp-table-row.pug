@@ -1,0 +1,41 @@
+if computer.isOccupied
+  tr.is-danger.is-light(id=`tr-${computer.id}`)
+    td= computer.name 
+    td= "desk-" + computer.deskId
+    td= computer.occupantName + " (" + computer.occupantEmail + ")"
+    td(style="width:300px" colspan="2")
+      form.field(
+        hx-post="/computers/unbook"
+        hx-target=`#tr-${computer.id}`
+        hx-target-403=`#unbook-error-${computer.id}`
+        hx-swap="outerHTML" 
+      )
+        input.button.is-small.is-success.is-light(
+          type="submit"
+          value= "unbook"
+        ) 
+        input(
+          type="hidden"
+          name="id"
+          value=computer.id
+        )
+        div.help.is-danger
+          p(id=`unbook-error-${computer.id}`)
+else
+  tr(id=`tr-${computer.id}`)
+    td= computer.name
+    td= computer.deskId
+    td(style="width:300px")
+      button.button.is-small.is-danger.is-light(
+        id=`book-${computer.id}`
+        hx-get=`/computers/book-form/${computer.id}`
+        hx-target="this" 
+        hx-swap="outerHTML"
+      ) Book
+
+    td(style="width:300px")
+      button.button.is-small.is-warning.is-light(
+        hx-get=`/computers/stash-form/${computer.id}`
+        hx-target="this"
+        hx-swap="outerHTML"
+      ) Stash
